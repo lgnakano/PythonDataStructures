@@ -91,4 +91,66 @@ class LinkedList:
         self.length += 1
         return True
 
+    def remove(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        if index == 0:
+            return self.pop_first()
+        if index == self.length - 1:
+            return self.pop()
+        prev = self.get(index - 1)
+        temp = prev.next
+        prev.next = temp.next
+        temp.next = None
+        self.length -= 1
+        return temp
 
+    def reverse(self):
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+        after = temp.next
+        before = None
+        for _ in range(self.length):
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after
+
+    def find_middle_node(self):
+        slow = self.head
+        fast = self.head
+        while fast != None and fast != self.tail:
+            slow = slow.next
+            fast = fast.next
+            fast = fast.next
+        return slow
+
+    def has_loop(self):
+        slow = self.head.next
+        fast = self.head.next
+        fast = fast.next
+        while fast != None and fast != self.tail:
+            if slow == fast:
+                return True
+            slow = slow.next
+            fast = fast.next
+            if fast != None:
+                fast = fast.next
+        if fast == None or fast == self.tail:
+            return False
+
+    def remove_duplicates(self):
+        current = self.head
+        while current is not None:
+            runner = current
+            while runner is not None:
+                if runner.next is None:
+                    break
+                if runner.next.value == current.value:
+                    runner.next = runner.next.next
+                    self.length -= 1
+                else:
+                    runner = runner.next
+            current = current.next
+        return True
