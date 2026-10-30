@@ -150,3 +150,178 @@ ll.append(2)
 ll.append(2)
 ll.append(3)
 test_remove_duplicates(ll, [1, 2, 3])
+
+print("")
+
+ll = LinkedList(1)
+ll.append(1)
+ll.append(1)
+ll.append(1)
+
+print(ll.binary_to_decimal())
+
+
+# Function to convert linked list to Python list
+def linkedlist_to_list(head):
+    result = []
+    current = head
+    while current:
+        result.append(current.value)
+        current = current.next
+    return result
+
+
+# Function to test partition_list
+def test_partition_list():
+    test_cases_passed = 0
+
+    print("-----------------------")
+
+    # Test 1: Partition in Middle
+    print("Test 1: Partition in Middle")
+    x = 5
+    print(f"x = {x}")
+    ll = LinkedList(5)
+    for i in [8, 3, 10, 2, 4]:
+        ll.append(i)
+    print("Before:", linkedlist_to_list(ll.head))
+    ll.partition_list(x)
+    print("After:", linkedlist_to_list(ll.head))
+    if linkedlist_to_list(ll.head) == [3, 2, 4, 5, 8, 10]:
+        print("PASS")
+        test_cases_passed += 1
+    else:
+        print("FAIL")
+
+    print("-----------------------")
+
+    # Test 2: Partition at Start
+    print("Test 2: Partition at Start")
+    x = 3
+    print(f"x = {x}")
+    ll = LinkedList(5)
+    for i in [8, 3, 10, 2, 4]:
+        ll.append(i)
+    print("Before:", linkedlist_to_list(ll.head))
+    ll.partition_list(x)
+    print("After:", linkedlist_to_list(ll.head))
+    if linkedlist_to_list(ll.head) == [2, 5, 8, 3, 10, 4]:
+        print("PASS")
+        test_cases_passed += 1
+    else:
+        print("FAIL")
+
+    print("-----------------------")
+
+    # Test 3: Partition at End
+    print("Test 3: Partition at End")
+    x = 11
+    print(f"x = {x}")
+    ll = LinkedList(5)
+    for i in [8, 3, 10, 2, 4]:
+        ll.append(i)
+    print("Before:", linkedlist_to_list(ll.head))
+    ll.partition_list(x)
+    print("After:", linkedlist_to_list(ll.head))
+    if linkedlist_to_list(ll.head) == [5, 8, 3, 10, 2, 4]:
+        print("PASS")
+        test_cases_passed += 1
+    else:
+        print("FAIL")
+
+    print("-----------------------")
+
+    # Test 4: Empty List
+    print("Test 4: Empty List")
+    x = 5
+    print(f"x = {x}")
+    ll = LinkedList(1)
+    ll.make_empty()
+    print("Before:", linkedlist_to_list(ll.head))
+    ll.partition_list(x)
+    print("After:", linkedlist_to_list(ll.head))
+    if ll.head is None:
+        print("PASS")
+        test_cases_passed += 1
+    else:
+        print("FAIL")
+
+    print("-----------------------")
+
+    # Test 5: All Greater or Equal
+    print("Test 5: All Greater or Equal")
+    x = 3
+    print(f"x = {x}")
+    ll = LinkedList(5)
+    for i in [6, 7, 8]:
+        ll.append(i)
+    print("Before:", linkedlist_to_list(ll.head))
+    ll.partition_list(x)
+    print("After:", linkedlist_to_list(ll.head))
+    if linkedlist_to_list(ll.head) == [5, 6, 7, 8]:
+        print("PASS")
+        test_cases_passed += 1
+    else:
+        print("FAIL")
+
+    print("-----------------------")
+
+    # Test 6: Single Element
+    print("Test 6: Single Element")
+    x = 5
+    print(f"x = {x}")
+    ll = LinkedList(4)
+    print("Before:", linkedlist_to_list(ll.head))
+    ll.partition_list(x)
+    print("After:", linkedlist_to_list(ll.head))
+    if linkedlist_to_list(ll.head) == [4]:
+        print("PASS")
+        test_cases_passed += 1
+    else:
+        print("FAIL")
+
+    print("-----------------------")
+
+    # Test 7: Duplicates Equal to x
+    print("Test 7: Duplicates Equal to x")
+    x = 3
+    print(f"x = {x}")
+    ll = LinkedList(3)
+    for i in [1, 3, 2, 3]:
+        ll.append(i)
+    print("Before:", linkedlist_to_list(ll.head))
+    ll.partition_list(x)
+    print("After:", linkedlist_to_list(ll.head))
+    if linkedlist_to_list(ll.head) == [1, 2, 3, 3, 3]:
+        print("PASS")
+        test_cases_passed += 1
+    else:
+        print("FAIL")
+
+    print("-----------------------")
+
+    # Test 8: Already Partitioned
+    print("Test 8: Already Partitioned")
+    x = 5
+    print(f"x = {x}")
+    ll = LinkedList(1)
+    for i in [2, 5, 8, 10]:
+        ll.append(i)
+    print("Before:", linkedlist_to_list(ll.head))
+    ll.partition_list(x)
+    print("After:", linkedlist_to_list(ll.head))
+    if linkedlist_to_list(ll.head) == [1, 2, 5, 8, 10]:
+        print("PASS")
+        test_cases_passed += 1
+    else:
+        print("FAIL")
+
+    print("-----------------------")
+
+    # Summary
+    print(f"{test_cases_passed} out of 8 tests passed.")
+
+
+# Run the test function
+test_partition_list()
+

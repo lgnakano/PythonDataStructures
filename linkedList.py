@@ -8,6 +8,11 @@ class LinkedList:
         self.tail = new_node
         self.length = 1
 
+    def make_empty(self):
+        self.head = None
+        self.tail = None
+        self.length = 0
+
     def print_list(self):
         temp = self.head
         while temp is not None:
@@ -154,3 +159,49 @@ class LinkedList:
                     runner = runner.next
             current = current.next
         return True
+
+    def binary_to_decimal(self):
+        decimal = 0
+        current = self.head
+        while current is not None:
+            decimal = 2 * decimal + current.value
+            current = current.next
+        return decimal
+
+    def partition_list(self, x):
+        if self.head is None:
+            return None
+        dummy_1 = Node(0)
+        dummy_2 = Node(0)
+
+        print(dummy_1.next)
+        print(dummy_2.next)
+
+        prev1 = dummy_1
+        prev2 = dummy_2
+
+        current = self.head
+        while current is not None:
+            print("value:")
+            print(current.value)
+            print("next:")
+            print(current.next)
+            if current.value < x:
+                print("dummy_1.next")
+                print(dummy_1.next)
+                print("prev1")
+                prev1.next = current
+                prev1 = current
+                prev1.print()
+            else:
+                print("dummy_2.next")
+                print(dummy_2.next)
+                print("prev2")
+                prev2.next = current
+                prev2 = current
+                prev2.print()
+            current = current.next
+
+        prev2.next = None
+        prev1.next = dummy_2.next
+        self.head = dummy_1.next
