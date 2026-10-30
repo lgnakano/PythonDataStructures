@@ -182,26 +182,31 @@ class LinkedList:
 
         current = self.head
         while current is not None:
-            print("value:")
-            print(current.value)
-            print("next:")
-            print(current.next)
             if current.value < x:
-                print("dummy_1.next")
-                print(dummy_1.next)
-                print("prev1")
                 prev1.next = current
                 prev1 = current
-                prev1.print()
             else:
-                print("dummy_2.next")
-                print(dummy_2.next)
-                print("prev2")
                 prev2.next = current
                 prev2 = current
-                prev2.print()
             current = current.next
 
         prev2.next = None
         prev1.next = dummy_2.next
         self.head = dummy_1.next
+
+    def reverse_between(self, beginning, ending):
+        if self.length <= 0:
+            return True
+        dummy = Node(0)
+        dummy.next = self.head
+        prev = dummy
+        for _ in range(beginning):
+            prev = prev.next
+        current = prev.next
+        for _ in range (ending - beginning):
+            to_move = current.next
+            current.next = to_move.next
+            to_move.next = prev.next
+            prev.next = to_move
+        self.head = dummy.next
+
