@@ -194,19 +194,35 @@ class LinkedList:
         prev1.next = dummy_2.next
         self.head = dummy_1.next
 
-    def reverse_between(self, beginning, ending):
+    def reverse_between(self, start_index, end_index):
         if self.length <= 0:
             return True
         dummy = Node(0)
         dummy.next = self.head
-        prev = dummy
-        for _ in range(beginning):
-            prev = prev.next
-        current = prev.next
-        for _ in range (ending - beginning):
-            to_move = current.next
-            current.next = to_move.next
-            to_move.next = prev.next
-            prev.next = to_move
+        previous_node = dummy
+        for _ in range(start_index):
+            previous_node = previous_node.next
+        current_node = previous_node.next
+        for _ in range (end_index - start_index):
+            node_to_move = current_node.next
+            current_node.next = node_to_move.next
+            node_to_move.next = previous_node.next
+            previous_node.next = node_to_move
+        self.head = dummy.next
+
+    def swap_pairs(self):
+        if self.length <= 0:
+            return True
+        dummy = Node(0)
+        dummy.next = self.head
+        previous = dummy
+        first = dummy.next
+        while first is not None and first.next is not None:
+            second = first.next
+            first.next = second.next
+            second.next = first
+            previous.next = second
+            previous = first
+            first = first.next
         self.head = dummy.next
 
