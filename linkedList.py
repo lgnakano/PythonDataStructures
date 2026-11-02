@@ -216,12 +216,12 @@ class LinkedList:
         dummy = Node(0)
         dummy.next = self.head
         previous = dummy
-        first = dummy.next
+        first = self.head
         while first is not None and first.next is not None:
             second = first.next
+            previous.next = second
             first.next = second.next
             second.next = first
-            previous.next = second
             previous = first
             first = first.next
         self.head = dummy.next

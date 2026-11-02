@@ -40,3 +40,92 @@ class DoublyLinkedList:
         self.length -= 1
         return return_value
 
+    def prepend(self, value):
+        new_node = DoublyLinkedListNode(value)
+        new_node.next = self.head
+        if self.head is not None:
+            self.head.prev = new_node
+        else:
+            self.tail = new_node
+        self.length += 1
+        self.head = new_node
+        return True
+
+    def pop_first(self):
+        if self.length == 0:
+            return None
+        temp = self.head
+        if self.length == 1:
+            self.head = None
+            self.tail = None
+        else:
+            self.head = self.head.next
+            self.head.prev = None
+            temp.next = None
+        self.length -= 1
+        return temp
+
+    def get(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        temp = self.head
+        if index < self.length/2:
+            for _ in range(index):
+                temp = temp.next
+        else:
+            temp = self.tail
+            for _ in range(self.length - 1, index, -1):
+                temp = temp.prev
+        return temp
+
+    def set_value(self, index, value):
+        temp = self.get(index)
+        if temp:
+            temp.value = value
+            return True
+        return False
+
+    def insert(self, index, value):
+
+        if index == 0:
+            return self.prepend(value)
+        if index == self.length:
+            return self.append(value)
+        if index < 0 or index > self.length:
+            return False
+        after = self.get(index)
+        before = after.prev
+        new_node = DoublyLinkedListNode(value)
+        new_node.next = after
+        new_node.prev = before
+        before.next = new_node
+        after.prev = new_node
+        self.length += 1
+        return True
+
+    def remove(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        if index == 0:
+            return self.pop_first()
+        if index == self.length - 1:
+            return self.pop()
+        temp = self.get(index)
+        temp.prev.next = temp.next
+        temp.next.prev = temp.prev
+        temp.next = None
+        temp.prev = None
+        self.length -= 1
+        return temp
+
+    def is_palindrome(self):
+        if self.length <= 1:
+            return True
+        before = self.head
+        after = self.tail
+        for _ in range(self.length//2):
+            if before.value != after.value:
+                return False
+            before = before.next
+            after = after.prev
+        return before.value == after.value
