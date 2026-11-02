@@ -129,3 +129,17 @@ class DoublyLinkedList:
             before = before.next
             after = after.prev
         return before.value == after.value
+
+    def reverse(self):
+        if self.length == 0:
+            return
+        current = self.head
+        while current is not None:
+            temp_next = current.next
+            current.next = current.prev
+            current.prev = temp_next
+            current = temp_next
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+

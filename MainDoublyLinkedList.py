@@ -107,3 +107,20 @@ print('\nRemoved node:')
 print(my_doubly_linked_list.remove(2).value)
 print('DLL after remove() of last node:')
 my_doubly_linked_list.print_list()
+
+my_doubly_linked_list = DoublyLinkedList(1)
+my_doubly_linked_list.append(2)
+my_doubly_linked_list.append(3)
+my_doubly_linked_list.append(4)
+my_doubly_linked_list.append(5)
+
+
+print('DLL before reverse():')
+my_doubly_linked_list.print_list()
+
+
+my_doubly_linked_list.reverse()
+
+
+print('\nDLL after reverse():')
+my_doubly_linked_list.print_list()
