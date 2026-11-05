@@ -214,3 +214,23 @@ class DoublyLinkedList:
             previous_node.next.prev = previous_node
         self.head = dummy.next
         self.head.prev = None
+
+    def swap_pairs(self):
+        if self.length <= 0:
+            return True
+        dummy = DoublyLinkedListNode(0)
+        dummy.next = self.head
+        previous = dummy
+        first = self.head
+        while first is not None and first.next is not None:
+            second = first.next
+            previous.next = second
+            first.next = second.next
+            second.next = first
+            previous.next.prev = previous
+            if first.next is not None:
+                first.next.prev = first
+            second.next.prev = second
+            previous = first
+            first = first.next
+        self.head = dummy.next

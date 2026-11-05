@@ -216,3 +216,29 @@ dll4.print_list()
 dll4.reverse_between(0, 2)
 print("AFTER:  ", end="")
 dll4.print_list()
+
+my_dll = DoublyLinkedList(1)
+my_dll.append(2)
+my_dll.append(3)
+my_dll.append(4)
+
+print('my_dll before swap_pairs:')
+my_dll.print_list()
+
+my_dll.swap_pairs()
+
+
+print('my_dll after swap_pairs:')
+my_dll.print_list()
+
+
+"""
+    EXPECTED OUTPUT:
+    ----------------
+    my_dll before swap_pairs:
+    1 <-> 2 <-> 3 <-> 4
+    ------------------------
+    my_dll after swap_pairs:
+    2 <-> 1 <-> 4 <-> 3
+
+"""
