@@ -159,3 +159,59 @@ def test_is_balanced_parentheses():
         print('Test case 11 failed')
 
 test_is_balanced_parentheses()
+
+
+##### WRITE SORT_STACK FUNCTION HERE #####
+#                                        #
+#  This is a separate function that is   #
+#  not a method within the Stack class.  #
+#                                        #
+#  <- INDENT ALL THE WAY TO THE LEFT <-  #
+#                                        #
+##########################################
+
+def sort_stack(input_stack):
+    sorted_stack = Stack_List()
+    while input_stack.is_empty() is False:
+        temp = input_stack.pop()
+        while sorted_stack.is_empty() is False and sorted_stack.peek() > temp:
+            input_stack.push(sorted_stack.pop())
+        sorted_stack.push(temp)
+    while sorted_stack.is_empty() is False:
+        input_stack.push(sorted_stack.pop())
+    return sorted_stack
+
+
+my_stack = Stack_List()
+my_stack.push(3)
+my_stack.push(1)
+my_stack.push(5)
+my_stack.push(4)
+my_stack.push(2)
+
+print("Stack before sort_stack():")
+my_stack.print_stack()
+
+sort_stack(my_stack)
+
+print("\nStack after sort_stack:")
+my_stack.print_stack()
+
+"""
+    EXPECTED OUTPUT:
+    ----------------
+    Stack before sort_stack():
+    2
+    4
+    5
+    1
+    3
+
+    Stack after sort_stack:
+    1
+    2
+    3
+    4
+    5
+
+"""
