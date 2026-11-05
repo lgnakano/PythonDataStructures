@@ -46,3 +46,28 @@ my_stack.print_stack()
     1
 
 """
+
+def reverse_string(string):
+    my_stack = Stack_List()
+    for charpos in range(len(string)):
+        my_stack.push(string[charpos])
+    ret_string = ""
+    while my_stack.is_empty() is not True:
+        ret_string += my_stack.pop()
+    return ret_string
+
+
+
+
+my_string = 'hello'
+
+print ( reverse_string(my_string) )
+
+
+
+"""
+    EXPECTED OUTPUT:
+    ----------------
+    olleh
+
+"""
