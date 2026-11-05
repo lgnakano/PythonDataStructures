@@ -11,7 +11,21 @@ class DoublyLinkedList:
     def print_list(self):
         temp = self.head
         while temp is not None:
+            # print("node")
+            # print("node address")
+            # print(temp)
+            # print("previous address")
+            # print(temp.prev)
+            # if temp.prev is not None:
+            #     print(temp.prev.value)
+            # else:
+            #     print("None")
+            # print("node value")
             print(temp.value)
+            # print("next address")
+            # print(temp.next)
+            # if temp.next is not None:
+            #     print(temp.next.value)
             temp = temp.next
 
     def append(self, value):
@@ -179,3 +193,24 @@ class DoublyLinkedList:
         print(dummy_1.next.value)
         self.head = dummy_1.next
         self.tail.next = None
+
+    def reverse_between(self, start_index, end_index):
+        if self.length <= 1:
+            return True
+        dummy = DoublyLinkedListNode(0)
+        dummy.next = self.head
+        previous_node = dummy
+        for _ in range(start_index):
+            previous_node = previous_node.next
+        current_node = previous_node.next
+        for _ in range (end_index - start_index):
+            node_to_move = current_node.next
+            current_node.next = node_to_move.next
+            node_to_move.next = previous_node.next
+            previous_node.next = node_to_move
+            if current_node.next is not None:
+                current_node.next.prev = current_node
+            node_to_move.next.prev = node_to_move
+            previous_node.next.prev = previous_node
+        self.head = dummy.next
+        self.head.prev = None

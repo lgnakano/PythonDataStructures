@@ -6,6 +6,7 @@ class DoublyLinkedListNode:
 
     def print(self):
         print("Node:")
+        print(self)
         print("value:")
         print(self.value)
         print("next:")

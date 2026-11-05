@@ -210,6 +210,7 @@ class LinkedList:
             previous_node.next = node_to_move
         self.head = dummy.next
 
+
     def swap_pairs(self):
         if self.length <= 0:
             return True
