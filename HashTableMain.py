@@ -7,3 +7,6 @@ my_hash_table.set_item("washers", 50)
 my_hash_table.set_item("lumber", 70)
 
 my_hash_table.print_table()
+print(my_hash_table.get_item("bolts"))
+print(my_hash_table.get_item("washers"))
+print(my_hash_table.get_item("screws"))
