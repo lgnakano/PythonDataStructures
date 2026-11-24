@@ -10,3 +10,5 @@ my_hash_table.print_table()
 print(my_hash_table.get_item("bolts"))
 print(my_hash_table.get_item("washers"))
 print(my_hash_table.get_item("screws"))
+
+print(my_hash_table.keys())
